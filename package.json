@@ -18,5 +18,8 @@
     "concurrently": "^5.3.0",
     "express": "^4.17.1",
     "requests": "^0.3.0"
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.8"
   }
 }
