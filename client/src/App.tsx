@@ -1,7 +1,12 @@
 import React from "react";
+import Landing from "./Components/User/Landing";
 
 const App: React.FC = () => {
-  return <div>Hello World!</div>;
+  return (
+    <div>
+      <Landing />
+    </div>
+  );
 };
 
 export default App;
