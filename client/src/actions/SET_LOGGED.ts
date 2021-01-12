@@ -1,9 +1,9 @@
 const SET_LOGGED = "SET_LOGGED";
 
-type SetLogged = { type: typeof SET_LOGGED; payload: boolean };
+type SetLogged = { type: typeof SET_LOGGED };
 
-const setLogged = (logged: boolean): SetLogged => {
-  return { type: SET_LOGGED as typeof SET_LOGGED, payload: logged };
+const setLogged: SetLogged = {
+  type: SET_LOGGED,
 };
 
-export type Actions = SetLogged;
+export default setLogged;
