@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 import CombReducers from "./Store";
 import { composeWithDevTools } from "redux-devtools-extension";
 import islogged from "./reducers/isLogged";
-const store = createStore(islogged, composeWithDevTools());
+const store = createStore(CombReducers, composeWithDevTools());
 
 ReactDOM.render(
   <Provider store={store}>

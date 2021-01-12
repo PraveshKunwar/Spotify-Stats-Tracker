@@ -29,7 +29,7 @@ const Landing: React.FC = () => {
   return (
     <div className="welcome_screen_?login">
       {isLogged ? <Profile /> : <Login />}
-      <p>{accessToken}</p>
+      <p></p>
     </div>
   );
 };

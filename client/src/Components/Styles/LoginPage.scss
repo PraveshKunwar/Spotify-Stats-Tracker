@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "ProximaNova-Regular";
+  src: url("./fonts/ProximaNova-Regular.otf");
+}
+
+@font-face {
+  font-family: "Circular STD";
+  src: url("./fonts/Circular\ Std\ Font.otf");
+}
+
+html {
+  background: black;
+}
+
+.flex-login-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.flex-login-image > img {
+  margin-top: 20vh;
+}
+
+@media screen and (max-width: 768px) {
+  .flex-login-image > img {
+    width: 100%;
+  }
+}
+
+//varaibles
+$color_visited_and_not: white;
+$decorate_or_not: none;
+$font_families: "Circular STD", "ProximaNova-Regular";
+
+.font_login {
+  font-family: $font_families;
+  font-size: 30px;
+  color: $color_visited_and_not;
+  text-decoration: none;
+  padding: 20px;
+  letter-spacing: 2px;
+}
+
+.font_login:visited {
+  color: white;
+  text-decoration: $decorate_or_not;
+}
+
+.flex_login_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
