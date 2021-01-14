@@ -13,10 +13,6 @@
   src: url("./fonts//CircularStd-Book.woff");
 }
 
-html {
-  background: black;
-}
-
 .flex-login-image {
   display: flex;
   justify-content: center;
@@ -24,17 +20,11 @@ html {
   flex-wrap: wrap;
 }
 
-.flex-login-image > img {
-  margin-top: 10vh;
+.uptop {
+  margin-top: 15rem;
 }
 
-@media screen and (max-width: 768px) {
-  .flex-login-image > img {
-    width: 100%;
-  }
-}
-
-//varaibles
+//variables
 $color_visited_and_not: white;
 $decorate_or_not: none;
 $font_families: "Circular STD", "ProximaNova-Regular";

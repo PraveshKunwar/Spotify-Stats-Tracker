@@ -1,0 +1,68 @@
+html {
+  background: black;
+}
+
+@font-face {
+  font-family: "ProximaNova-Regular";
+  src: url("./fonts/ProximaNova-Regular.otf");
+}
+
+@font-face {
+  font-family: "Circular STD";
+  src: url("./fonts/Circular\ Std\ Font.otf");
+}
+
+@font-face {
+  font-family: "Circular STD 2";
+  src: url("./fonts//CircularStd-Book.woff");
+}
+
+$font_families: "Circular STD 2", "Circular STD", "ProximaNova-Regular";
+
+.icon {
+  color: white;
+  size: 30px;
+}
+
+.flex-bar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.flex-bar > div {
+  text-align: center;
+  font-family: $font_families;
+  position: relative;
+}
+.nav-links {
+  color: white;
+  text-decoration: none;
+  font-size: 11px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.flex-bar > div:after {
+  content: " ";
+  display: block;
+  border-top: 3px solid rgb(30, 215, 96);
+  background: #181818;
+  opacity: 0.8;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  width: 0;
+}
+
+.flex-bar > div:hover:after {
+  width: 100%;
+}
+
+.flex-bar {
+  :focus {
+    outline: none;
+  }
+}
+
+.active_nav {
+  border-top: 3px solid rgb(30, 215, 96);
+}

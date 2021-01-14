@@ -2,16 +2,12 @@ import React from "react";
 import SpotifyURL from "./SpotifyURL";
 import LoginPage from "../Styles/LoginPage.scss";
 import LoginButton from "../Styles/LoginButton";
-import Img from "../images/spotify.jpg";
 import LandingHeader from "../Styles/LandingHeader";
 import Author from "../Styles/Author";
 
 const Login = () => {
   return (
-    <div className="login?_with?_account?" style={LoginPage}>
-      <div className="flex-login-image">
-        <img src={Img} alt="banner_spotify" className="banner"></img>
-      </div>
+    <div className="login?_with?_account? uptop" style={LoginPage}>
       <br></br>
       <div className="author_creds">
         <LandingHeader className="landing_header">
