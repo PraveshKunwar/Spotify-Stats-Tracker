@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import PersonalProfile from "../../functions/Requests";
-import Personal from "./Personal";
+import PersonalProfile from "../../functions/Requests/PersonalProfile";
 import Navbar from "../../../Navbar/Navbar";
 
 const Profile = () => {
   //@ts-ignore -Token exists
   const access_token: string = useSelector((state) => state.Token.token);
+  //@ts-ignore
+  const checkNull = useSelector((state) => state.SetPersonal);
   const dispatch = useDispatch();
   useEffect(() => {
     PersonalProfile(access_token).then((res) => {
@@ -16,15 +17,14 @@ const Profile = () => {
         external_urls: res.data.external_urls.spotify,
         followers: res.data.followers.total,
         id: res.data.id,
-        images: res.data.images[0].url,
+        image: res.data.images[0].url,
       });
     });
-  }, [dispatch]);
+  });
 
   return (
     <div className="?user_profile?">
-      <Navbar />
-      {/* react router setup*/}
+      {checkNull === null ? false : <Navbar />}
     </div>
   );
 };

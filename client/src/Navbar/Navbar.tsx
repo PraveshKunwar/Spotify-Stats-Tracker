@@ -1,7 +1,7 @@
 import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/More";
-import styles from "../Components/Styles/Navbar.scss";
+import styles from "../Components/Styles/Sass/Navbar.scss";
 
 //@ts-ignore
 import {
@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
         </div>
       </Nav>
       <Switch>
-        <Route path="/">
+        <Route path="/" exact>
           <Personal />
         </Route>
         <Route path="/playlists">

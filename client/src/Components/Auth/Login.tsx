@@ -1,6 +1,6 @@
 import React from "react";
 import SpotifyURL from "./SpotifyURL";
-import LoginPage from "../Styles/LoginPage.scss";
+import LoginPage from "../Styles/Sass/LoginPage.scss";
 import LoginButton from "../Styles/LoginButton";
 import LandingHeader from "../Styles/LandingHeader";
 import Author from "../Styles/Author";

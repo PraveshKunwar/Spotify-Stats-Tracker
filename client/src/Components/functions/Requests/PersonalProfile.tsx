@@ -1,4 +1,3 @@
-//Requests for all the data we need store in this file.
 import axios from "axios";
 
 const PersonalProfile = (valid_token: string) => {
