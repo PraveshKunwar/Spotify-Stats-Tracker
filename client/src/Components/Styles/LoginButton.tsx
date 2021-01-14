@@ -9,6 +9,12 @@ const LoginButton = styled.button`
   &:hover {
     background-position: left;
   }
+  @media screen and (max-width: 280px) {
+    background: #15883e;
+    color: black;
+    border-radius: 99px;
+    text-align: center;
+  }
 `;
 
 export default LoginButton;

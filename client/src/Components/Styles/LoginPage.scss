@@ -8,6 +8,11 @@
   src: url("./fonts/Circular\ Std\ Font.otf");
 }
 
+@font-face {
+  font-family: "Circular STD 2";
+  src: url("./fonts//CircularStd-Book.woff");
+}
+
 html {
   background: black;
 }
@@ -20,7 +25,7 @@ html {
 }
 
 .flex-login-image > img {
-  margin-top: 20vh;
+  margin-top: 10vh;
 }
 
 @media screen and (max-width: 768px) {
@@ -52,4 +57,12 @@ $font_families: "Circular STD", "ProximaNova-Regular";
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.landing_header {
+  font-family: $font_families;
+}
+
+.author {
+  font-family: "Circular STD 2", $font_families;
 }
