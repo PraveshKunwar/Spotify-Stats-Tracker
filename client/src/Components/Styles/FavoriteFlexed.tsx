@@ -8,7 +8,7 @@ const FavoriteFlexed = styled.div`
   align-items: center;
 
   > div {
-    margin: 30px;
+    margin: 20px;
   }
 `;
 

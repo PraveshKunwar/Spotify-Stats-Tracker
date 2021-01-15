@@ -6,10 +6,15 @@ import Favorite from "../../Styles/Favorite";
 import FavoriteFlexed from "../../Styles/FavoriteFlexed";
 import FavoriteArtistsText from "../../Styles/FavoriteArtistsText";
 import FavoriteArtistsImg from "../../Styles/FavoriteArtistsImg";
+
+import FavoriteTracksText from "../../Styles/FavoriteTracksText";
+import FavoriteTracksImg from "../../Styles/FavoriteTrackImg";
+
 import Hr from "../../Styles/Hr";
 import styles from "../../Styles/Sass/Personal.scss";
 
 import FavoriteArtists from "../../functions/Requests/FavoriteArtists";
+import FavoriteTracks from "../../functions/Requests/FavoriteTracks";
 
 const Personal: React.FC = () => {
   //@ts-ignore
@@ -17,10 +22,15 @@ const Personal: React.FC = () => {
   //@ts-ignore
   const access_token = useSelector((state) => state.Token.token);
   const [items, setItems] = useState([]);
+  const [tracks, setTracks] = useState([]);
   useEffect(() => {
     //@ts-ignore
     FavoriteArtists(access_token).then((res) => {
       setItems(res.data.items);
+    });
+    FavoriteTracks(access_token).then((res) => {
+      setTracks(res.data.items);
+      console.log(res.data.items);
     });
   }, [access_token]);
 
@@ -54,6 +64,37 @@ const Personal: React.FC = () => {
                     //@ts-ignore}
                     <FavoriteArtistsText>{artists.name}</FavoriteArtistsText>
                   }
+                </div>
+              );
+            })}
+            <Hr />
+          </FavoriteFlexed>
+        </div>
+        <div className="?favorite_tracks">
+          <Favorite className="favorite">
+            Here are your favorite tracks based on your music:
+          </Favorite>
+          <FavoriteFlexed>
+            {tracks.map((track) => {
+              return (
+                <div>
+                  <FavoriteTracksImg
+                    //@ts-ignore
+                    src={track.album.images[1].url}
+                    //@ts-ignore
+                    alt={track.name}
+                  />
+                  <FavoriteTracksText
+                    //@ts-ignore
+                    href={track.external_urls.spotify}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {
+                      //@ts-ignore
+                      track.name
+                    }
+                  </FavoriteTracksText>
                 </div>
               );
             })}
