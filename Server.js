@@ -34,6 +34,10 @@ app.use(
   })
 );
 
+app.all("*", (req, res) => {
+  res.status(200).sendFile(__dirname + "/client/public/index.html");
+});
+
 app.get("/callback", (req, res) => {
   let code = req.query.code;
   let options = {
