@@ -1,4 +1,3 @@
-import Client from "./Client";
 //define scopes
 const scopes = [
   "ugc-image-upload",
@@ -24,7 +23,7 @@ const scopes = [
 
 require("dotenv").config();
 const authEndpoint = "https://accounts.spotify.com/authorize";
-const CLIENT_ID = process.env.CLIENT_ID || Client.CLIENT_ID;
+const CLIENT_ID = process.env.CLIENT_ID;
 const redirectUri = process.env.REDIRECT || "http://localhost:5000/callback";
 
 const SpotifyURL: string = `${authEndpoint}?client_id=${CLIENT_ID}&redirect_uri=${redirectUri}&scope=${scopes.join(
