@@ -5,8 +5,12 @@ const FavoriteTrackImg = styled.img`
   width: 64px;
   height: 64px;
   transition: opacity 0.5s ease-in-out;
+  opacity: 0.7;
   &:hover {
-    opacity: 0.4;
+    opacity: 1;
+  }
+  @media screen and (max-width: 768px) {
+    opacity: 1;
   }
 `;
 

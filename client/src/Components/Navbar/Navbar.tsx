@@ -1,7 +1,7 @@
 import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/More";
-import styles from "../Components/Styles/Sass/Navbar.scss";
+import styles from "../Styles/Sass/Navbar.scss";
 
 //@ts-ignore
 import {
@@ -11,11 +11,11 @@ import {
   NavLink,
 } from "react-router-dom";
 
-import Personal from "../Components/User/Profile/Personal";
-import Playlists from "../Components/User/Profile/Playlists";
-import More from "../Components/User/Profile/More";
+import Personal from "../User/Profile/Personal";
+import Playlists from "../User/Profile/Playlists";
+import More from "../User/Profile/More";
 
-import Nav from "../Components/Styles/Nav";
+import Nav from "../Styles/Nav";
 
 const Navbar: React.FC = () => {
   return (

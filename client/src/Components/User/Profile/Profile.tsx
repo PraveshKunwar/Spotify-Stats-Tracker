@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PersonalProfile from "../../functions/Requests/PersonalProfile";
-import React from "react"
-import Navbar from "../../../Navbar/Navbar";
+import React from "react";
+import Navbar from "../../Navbar/Navbar";
 
-const Profile:React.FC = () => {
+const Profile: React.FC = () => {
   //@ts-ignore -Token exists
   const access_token: string = useSelector((state) => state.Token.token);
   //@ts-ignore

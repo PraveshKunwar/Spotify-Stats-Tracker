@@ -10,11 +10,16 @@ import FavoriteArtistsImg from "../../Styles/FavoriteArtistsImg";
 import FavoriteTracksText from "../../Styles/FavoriteTracksText";
 import FavoriteTracksImg from "../../Styles/FavoriteTrackImg";
 
+import CurrentlyPlayingFlexed from "../../Styles/CurrentlyPlayingFlexed";
+import CurrentlyPlayingText from "../../Styles/CurrentlyPlayingText";
+import CurrentlyPlayingImage from "../../Styles/CurrentlyPlayingImage";
+
 import Hr from "../../Styles/Hr";
 import styles from "../../Styles/Sass/Personal.scss";
 
 import FavoriteArtists from "../../functions/Requests/FavoriteArtists";
 import FavoriteTracks from "../../functions/Requests/FavoriteTracks";
+import CurrentlyPlaying from "../../functions/Requests/CurrentlyPlaying";
 
 const Personal: React.FC = () => {
   //@ts-ignore
@@ -23,6 +28,8 @@ const Personal: React.FC = () => {
   const access_token = useSelector((state) => state.Token.token);
   const [items, setItems] = useState([]);
   const [tracks, setTracks] = useState([]);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentlyPlayingItems, setCurrentlyPlayingItems] = useState([]);
   useEffect(() => {
     //@ts-ignore
     FavoriteArtists(access_token).then((res) => {
@@ -31,6 +38,11 @@ const Personal: React.FC = () => {
     FavoriteTracks(access_token).then((res) => {
       setTracks(res.data.items);
       console.log(res.data.items);
+    });
+    CurrentlyPlaying(access_token).then((res) => {
+      setIsPlaying(res.data.is_playing);
+      setCurrentlyPlayingItems(res.data.item);
+      console.log(res.data.item);
     });
   }, [access_token]);
 
@@ -99,7 +111,47 @@ const Personal: React.FC = () => {
               );
             })}
           </FavoriteFlexed>
+          <Hr />
         </div>
+        {isPlaying === true ? (
+          <div className="?currently_playing">
+            <Favorite className="favorite">Currently Playing:</Favorite>
+            <CurrentlyPlayingFlexed>
+              <div>
+                <CurrentlyPlayingImage
+                  src={
+                    //@ts-ignore
+                    currentlyPlayingItems.album.images[0].url
+                  }
+                  alt="?currenltly_playing_image"
+                />
+                <CurrentlyPlayingText
+                  href={
+                    //@ts-ignore
+                    currentlyPlayingItems.external_urls.spotify
+                  }
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {
+                    //@ts-ignore
+                    currentlyPlayingItems.name
+                  }
+                </CurrentlyPlayingText>
+              </div>
+            </CurrentlyPlayingFlexed>
+            <audio controls>
+              <source
+                src={
+                  //@ts-ignore
+                  currentlyPlayingItems.preview_url
+                }
+              ></source>
+            </audio>
+          </div>
+        ) : (
+          false
+        )}
       </div>
     </div>
   );
