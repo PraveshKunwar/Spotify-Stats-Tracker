@@ -14,6 +14,7 @@ import {
 import Personal from "../User/Profile/Personal";
 import Playlists from "../User/Profile/Playlists";
 import More from "../User/Profile/More";
+import Artist from "../User/Profile/Artist";
 
 import Nav from "../Styles/Nav";
 
@@ -56,6 +57,9 @@ const Navbar: React.FC = () => {
         </Route>
         <Route path="/more">
           <More />
+        </Route>
+        <Route path="/artist/:id">
+          <Artist />
         </Route>
       </Switch>
     </Router>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const FavoriteArtistsText = styled.p`
+const FavoriteArtistsText = styled.a`
   text-align: center;
   font-size: 18px;
   color: white;

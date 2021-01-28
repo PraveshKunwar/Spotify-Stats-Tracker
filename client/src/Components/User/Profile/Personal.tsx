@@ -10,39 +10,42 @@ import FavoriteArtistsImg from "../../Styles/FavoriteArtistsImg";
 import FavoriteTracksText from "../../Styles/FavoriteTracksText";
 import FavoriteTracksImg from "../../Styles/FavoriteTrackImg";
 
-import CurrentlyPlayingFlexed from "../../Styles/CurrentlyPlayingFlexed";
-import CurrentlyPlayingText from "../../Styles/CurrentlyPlayingText";
-import CurrentlyPlayingImage from "../../Styles/CurrentlyPlayingImage";
-
 import Hr from "../../Styles/Hr";
 import styles from "../../Styles/Sass/Personal.scss";
 
 import FavoriteArtists from "../../functions/Requests/FavoriteArtists";
 import FavoriteTracks from "../../functions/Requests/FavoriteTracks";
-import CurrentlyPlaying from "../../functions/Requests/CurrentlyPlaying";
 
 const Personal: React.FC = () => {
   //@ts-ignore
   const Profile = useSelector((state) => state.SetPersonal);
   //@ts-ignore
   const access_token = useSelector((state) => state.Token.token);
-  const [items, setItems] = useState([]);
+  const [med, setMed] = useState([]);
+  const [long, setLong] = useState([]);
+  const [short, setShort] = useState([]);
   const [tracks, setTracks] = useState([]);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentlyPlayingItems, setCurrentlyPlayingItems] = useState([]);
+  const [tracksShort, setTracksShort] = useState([]);
+
   useEffect(() => {
-    //@ts-ignore
-    CurrentlyPlaying(access_token).then((res) => {
-      setIsPlaying(res.data.is_playing);
-      setCurrentlyPlayingItems(res.data.item);
-      console.log(res.data.item);
+    FavoriteArtists(access_token, 1)?.then((res) => {
+      //med term
+      setMed(res.data.items);
     });
-    FavoriteArtists(access_token).then((res) => {
-      setItems(res.data.items);
-    });
-    FavoriteTracks(access_token).then((res) => {
-      setTracks(res.data.items);
+    FavoriteArtists(access_token, 2)?.then((res) => {
+      //long term
+      setLong(res.data.items);
       console.log(res.data.items);
+    });
+    FavoriteArtists(access_token, 3)?.then((res) => {
+      //short term
+      setShort(res.data.items);
+    });
+    FavoriteTracks(access_token, 1)?.then((res) => {
+      setTracks(res.data.items);
+    });
+    FavoriteTracks(access_token, 2)?.then((res) => {
+      setTracksShort(res.data.items);
     });
   }, [access_token]);
 
@@ -62,22 +65,69 @@ const Personal: React.FC = () => {
 
         <div className="?favorite_artists?">
           <Favorite className="favorite">
-            Here are your favorite artists based on your music:
+            Here are your favorite artists based on your music (Last 4 Weeks
+            approx):
           </Favorite>
           <FavoriteFlexed>
             {
               //@ts-ignore map exists
-              items.map((artists: any) => {
+              short.map((artists: any) => {
                 return (
                   <div>
                     {<FavoriteArtistsImg src={artists.images[0].url} />}
-                    {<FavoriteArtistsText>{artists.name}</FavoriteArtistsText>}
+                    {
+                      <FavoriteArtistsText href={`/artist/${artists.id}`}>
+                        {artists.name}
+                      </FavoriteArtistsText>
+                    }
                   </div>
                 );
               })
             }
-            <Hr />
           </FavoriteFlexed>
+          <Favorite className="favorite">
+            Here are your favorite artists based on your music (Last 6 Months
+            approx):
+          </Favorite>
+          <FavoriteFlexed>
+            {
+              //@ts-ignore map exists
+              med.map((artists: any) => {
+                return (
+                  <div>
+                    {<FavoriteArtistsImg src={artists.images[0].url} />}
+                    {
+                      <FavoriteArtistsText href={`/artist/${artists.id}`}>
+                        {artists.name}
+                      </FavoriteArtistsText>
+                    }
+                  </div>
+                );
+              })
+            }
+          </FavoriteFlexed>
+          <Favorite className="favorite">
+            Here are your favorite artists based on your music (Several Years
+            Back):
+          </Favorite>
+          <FavoriteFlexed>
+            {
+              //@ts-ignore map exists
+              long.map((artists: any) => {
+                return (
+                  <div>
+                    {<FavoriteArtistsImg src={artists.images[0].url} />}
+                    {
+                      <FavoriteArtistsText href={`/artist/${artists.id}`}>
+                        {artists.name}
+                      </FavoriteArtistsText>
+                    }
+                  </div>
+                );
+              })
+            }
+          </FavoriteFlexed>
+          <Hr />
         </div>
         <div className="?favorite_tracks">
           <Favorite className="favorite">
@@ -104,41 +154,30 @@ const Personal: React.FC = () => {
                 );
               })
             }
+            {
+              //@ts-ignore map exists
+              tracksShort.map((track: any) => {
+                return (
+                  <div>
+                    <FavoriteTracksImg
+                      src={track.album.images[1].url}
+                      alt={track.name}
+                    />
+                    <FavoriteTracksText
+                      href={track.external_urls.spotify}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {track.name}
+                    </FavoriteTracksText>
+                  </div>
+                );
+              })
+            }
           </FavoriteFlexed>
+
           <Hr />
         </div>
-        {isPlaying === true && currentlyPlayingItems.length !== 0 ? (
-          <div className="?currently_playing">
-            <Favorite className="favorite">Currently Playing:</Favorite>
-            <CurrentlyPlayingFlexed>
-              <CurrentlyPlayingText
-                href={
-                  //@ts-ignore
-                  currentlyPlayingItems.external_urls.spotify
-                }
-                rel="noreferrer"
-                target="_blank"
-              >
-                {
-                  //@ts-ignore
-                  currentlyPlayingItems.name
-                }
-              </CurrentlyPlayingText>
-              <div>
-                <CurrentlyPlayingImage
-                  src={
-                    //@ts-ignore
-                    currentlyPlayingItems.album.images[0].url
-                  }
-                  alt="?currenltly_playing_image"
-                />
-              </div>
-              ) : ( false )
-            </CurrentlyPlayingFlexed>
-          </div>
-        ) : (
-          false
-        )}
       </div>
     </div>
   );
