@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const CurrentlyPlayingText = styled.a`
+  margin-top: 1rem;
   text-align: center;
   font-size: 18px;
   color: white;
