@@ -1,9 +1,4 @@
 @font-face {
-  font-family: "ProximaNova-Regular";
-  src: url("../fonts/ProximaNova-Regular.otf");
-}
-
-@font-face {
   font-family: "Circular STD";
   src: url("../fonts/Circular\ Std\ Font.otf");
 }
@@ -12,26 +7,11 @@
   font-family: "Circular STD 2";
   src: url("../fonts//CircularStd-Book.woff");
 }
-
 $font_families: "Circular STD", "ProximaNova-Regular";
-
-.font_personal {
-  font-family: "Circular STD 2", $font_families;
-}
-
-.flexed_flexed {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .favorite {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-}
-
-.button_font {
-  font-family: "Circular STD 2", $font_families;
 }

@@ -9,6 +9,7 @@ import FavoriteArtistsImg from "../../Styles/FavoriteArtistsImg";
 
 import FavoriteTracksText from "../../Styles/FavoriteTracksText";
 import FavoriteTracksImg from "../../Styles/FavoriteTrackImg";
+import Button from "../../Styles/Button";
 
 import Hr from "../../Styles/Hr";
 import styles from "../../Styles/Sass/Personal.scss";
@@ -21,31 +22,16 @@ const Personal: React.FC = () => {
   const Profile = useSelector((state) => state.SetPersonal);
   //@ts-ignore
   const access_token = useSelector((state) => state.Token.token);
-  const [med, setMed] = useState([]);
-  const [long, setLong] = useState([]);
   const [short, setShort] = useState([]);
   const [tracks, setTracks] = useState([]);
-  const [tracksShort, setTracksShort] = useState([]);
 
   useEffect(() => {
-    FavoriteArtists(access_token, 1)?.then((res) => {
-      //med term
-      setMed(res.data.items);
-    });
-    FavoriteArtists(access_token, 2)?.then((res) => {
-      //long term
-      setLong(res.data.items);
-      console.log(res.data.items);
-    });
     FavoriteArtists(access_token, 3)?.then((res) => {
       //short term
       setShort(res.data.items);
     });
     FavoriteTracks(access_token, 1)?.then((res) => {
       setTracks(res.data.items);
-    });
-    FavoriteTracks(access_token, 2)?.then((res) => {
-      setTracksShort(res.data.items);
     });
   }, [access_token]);
 
@@ -85,48 +71,9 @@ const Personal: React.FC = () => {
               })
             }
           </FavoriteFlexed>
-          <Favorite className="favorite">
-            Here are your favorite artists based on your music (Last 6 Months
-            approx):
-          </Favorite>
-          <FavoriteFlexed>
-            {
-              //@ts-ignore map exists
-              med.map((artists: any) => {
-                return (
-                  <div>
-                    {<FavoriteArtistsImg src={artists.images[0].url} />}
-                    {
-                      <FavoriteArtistsText href={`/artist/${artists.id}`}>
-                        {artists.name}
-                      </FavoriteArtistsText>
-                    }
-                  </div>
-                );
-              })
-            }
-          </FavoriteFlexed>
-          <Favorite className="favorite">
-            Here are your favorite artists based on your music (Several Years
-            Back):
-          </Favorite>
-          <FavoriteFlexed>
-            {
-              //@ts-ignore map exists
-              long.map((artists: any) => {
-                return (
-                  <div>
-                    {<FavoriteArtistsImg src={artists.images[0].url} />}
-                    {
-                      <FavoriteArtistsText href={`/artist/${artists.id}`}>
-                        {artists.name}
-                      </FavoriteArtistsText>
-                    }
-                  </div>
-                );
-              })
-            }
-          </FavoriteFlexed>
+          <Button className="button_font">
+            <a href="/more/artists">See more artists</a>
+          </Button>
           <Hr />
         </div>
         <div className="?favorite_tracks">
@@ -154,28 +101,10 @@ const Personal: React.FC = () => {
                 );
               })
             }
-            {
-              //@ts-ignore map exists
-              tracksShort.map((track: any) => {
-                return (
-                  <div>
-                    <FavoriteTracksImg
-                      src={track.album.images[1].url}
-                      alt={track.name}
-                    />
-                    <FavoriteTracksText
-                      href={track.external_urls.spotify}
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      {track.name}
-                    </FavoriteTracksText>
-                  </div>
-                );
-              })
-            }
           </FavoriteFlexed>
-
+          <Button className="button_font">
+            <a href="/more/tracks">See more tracks</a>
+          </Button>
           <Hr />
         </div>
       </div>
