@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-const FavoriteTrackImg = styled.img`
+const ArtistImage = styled.img`
+  display: block;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 50%;
   width: ${(props: any) => props.wid};
   height: ${(props: any) => props.hei || 64};
@@ -14,4 +18,4 @@ const FavoriteTrackImg = styled.img`
   }
 `;
 
-export default FavoriteTrackImg;
+export default ArtistImage;

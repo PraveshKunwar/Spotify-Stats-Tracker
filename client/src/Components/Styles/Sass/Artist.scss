@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "Circular STD";
+  src: url("../fonts/Circular\ Std\ Font.otf");
+}
+
+@font-face {
+  font-family: "Circular STD 2";
+  src: url("../fonts//CircularStd-Book.woff");
+}
+$font_families: "Circular STD", "ProximaNova-Regular";
+
+.font_personal {
+  font-family: "Circular STD 2", $font_families;
+}
+
+.artist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+#change_link {
+  color: rgb(30, 215, 96);
+}
+&:visited {
+  color: rgb(30, 215, 96);
+}

@@ -19,6 +19,15 @@ const FavoriteTracks = (valid_token: string, a?: number) => {
         },
       }
     );
+  } else if (a === 3) {
+    return axios.get(
+      "https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=medium_term",
+      {
+        headers: {
+          Authorization: "Bearer " + valid_token,
+        },
+      }
+    );
   }
 };
 

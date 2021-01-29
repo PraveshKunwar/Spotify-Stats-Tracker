@@ -60,12 +60,16 @@ const Personal: React.FC = () => {
               short.map((artists: any) => {
                 return (
                   <div>
-                    {<FavoriteArtistsImg src={artists.images[0].url} />}
-                    {
-                      <FavoriteArtistsText href={`/artist/${artists.id}`}>
-                        {artists.name}
-                      </FavoriteArtistsText>
-                    }
+                    <div>
+                      {<FavoriteArtistsImg src={artists.images[0].url} />}
+                    </div>
+                    <div>
+                      {
+                        <FavoriteArtistsText href={`/artist/${artists.id}`}>
+                          {artists.name}
+                        </FavoriteArtistsText>
+                      }
+                    </div>
                   </div>
                 );
               })
@@ -78,7 +82,8 @@ const Personal: React.FC = () => {
         </div>
         <div className="?favorite_tracks">
           <Favorite className="favorite">
-            Here are your favorite tracks based on your music:
+            Here are your favorite tracks based on your music (Last Several
+            Years):
           </Favorite>
           <FavoriteFlexed>
             {
@@ -86,17 +91,23 @@ const Personal: React.FC = () => {
               tracks.map((track: any) => {
                 return (
                   <div>
-                    <FavoriteTracksImg
-                      src={track.album.images[1].url}
-                      alt={track.name}
-                    />
-                    <FavoriteTracksText
-                      href={track.external_urls.spotify}
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      {track.name}
-                    </FavoriteTracksText>
+                    <div>
+                      <FavoriteTracksImg
+                        wid="150px"
+                        hei="150px"
+                        src={track.album.images[1].url}
+                        alt={track.name}
+                      />
+                    </div>
+                    <div>
+                      <FavoriteTracksText
+                        href={track.external_urls.spotify}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        {track.name.split("(")[0]}
+                      </FavoriteTracksText>
+                    </div>
                   </div>
                 );
               })

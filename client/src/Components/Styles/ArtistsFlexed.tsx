@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
-const FavoriteFlexed = styled.div`
+const ArtistsFlexed = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
-  > div > div {
+  color: white;
+  flex-wrap: wrap;
+  > div {
     margin: 20px;
+    margin-top: 3px;
     text-align: center;
   }
 `;
 
-export default FavoriteFlexed;
+export default ArtistsFlexed;
