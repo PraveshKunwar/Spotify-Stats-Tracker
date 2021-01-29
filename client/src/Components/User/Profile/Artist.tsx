@@ -10,7 +10,7 @@ import QuickFactsTable from "../../Styles/QuickFactsTable";
 
 const Artist: React.FC = () => {
   const [id, setId] = useState("");
-  const [artist, setArtist] = useState([]);
+  const [artist, setArtist] = useState<any[]>([]);
   const [topTracks, setTopTracks] = useState([]);
   const [albums, setAlbums] = useState([]);
   const [related, setRelated] = useState([]);
@@ -34,92 +34,58 @@ const Artist: React.FC = () => {
   }, [access_token, id]);
   return (
     <div className="?artist_info font_personal">
-      {artist.length === 0 ? (
-        false
-      ) : (
-        <div>
-          <ArtistImage
-            src={
-              //@ts-ignore
-              artist.images[0].url
-            }
-            wid={`${
-              //@ts-ignore
-              artist.images[1].width
-            }px`}
-            hei={`
-         ${
-           //@ts-ignore
-           artist.images[1].height
-         }
-          px`}
-            alt="?artist_url"
-          />
+      {(artist: any) =>
+        artist.length === 0 ? (
+          false
+        ) : (
           <div>
-            <ArtistText
-              className="flexed_flexed"
-              href={
-                //@ts-ignore
-                artist.external_urls.spotify
-              }
-              rel="noreferrer"
-              target="_blank"
-            >
-              {
-                //@ts-ignore
-                artist.name
-              }
-            </ArtistText>
+            <ArtistImage
+              src={artist.images[0].url}
+              wid={`${artist.images[1].width}px`}
+              hei={`
+         ${artist.images[1].height}
+          px`}
+              alt="?artist_url"
+            />
+            <div>
+              <ArtistText
+                className="flexed_flexed"
+                href={artist.external_urls.spotify}
+                rel="noreferrer"
+                target="_blank"
+              >
+                {artist.name}
+              </ArtistText>
+            </div>
+            <Hr />
+            <div className="?quick_facts">
+              <ArtistText className="flexed_flexed">Quick Facts:</ArtistText>
+              <QuickFactsTable>
+                <tr>
+                  <td>Popularity:</td>
+                  <td>{`${artist.popularity}/100`}</td>
+                </tr>
+                <tr>
+                  <td>Followers:</td>
+                  <td>{artist.followers.total}</td>
+                </tr>
+                <tr>
+                  <td>Genres:</td>
+                  <td>{artist.genres.join(", ")}</td>
+                </tr>
+                <tr>
+                  <td>Spotify Link:</td>
+                  <td>
+                    <a id="change_link" href={artist.external_urls.spotify}>
+                      Link
+                    </a>
+                  </td>
+                </tr>
+              </QuickFactsTable>
+            </div>
           </div>
-          <Hr />
-          <div className="?quick_facts">
-            <ArtistText className="flexed_flexed">Quick Facts:</ArtistText>
-            <QuickFactsTable>
-              <tr>
-                <td>Popularity:</td>
-                <td>
-                  {`${
-                    //@ts-ignore
-                    artist.popularity
-                  }/100`}
-                </td>
-              </tr>
-              <tr>
-                <td>Followers:</td>
-                <td>
-                  {
-                    //@ts-ignore
-                    artist.followers.total
-                  }
-                </td>
-              </tr>
-              <tr>
-                <td>Genres:</td>
-                <td>
-                  {
-                    //@ts-ignore
-                    artist.genres.join(", ")
-                  }
-                </td>
-              </tr>
-              <tr>
-                <td>Spotify Link:</td>
-                <td>
-                  <a
-                    id="change_link"
-                    href={
-                      //@ts-ignore
-                      artist.external_urls.spotify
-                    }
-                  >
-                    Link
-                  </a>
-                </td>
-              </tr>
-            </QuickFactsTable>
-          </div>
-        </div>
-      )}
+        )
+      }
       {related.length === 0 ? (
         false
       ) : (

@@ -18,10 +18,9 @@ import FavoriteArtists from "../../functions/Requests/FavoriteArtists";
 import FavoriteTracks from "../../functions/Requests/FavoriteTracks";
 
 const Personal: React.FC = () => {
-  //@ts-ignore
-  const Profile = useSelector((state) => state.SetPersonal);
-  //@ts-ignore
-  const access_token = useSelector((state) => state.Token.token);
+  const Profile = useSelector((state: any) => state.SetPersonal);
+
+  const access_token = useSelector((state: any) => state.Token.token);
   const [short, setShort] = useState([]);
   const [tracks, setTracks] = useState([]);
 
@@ -55,25 +54,22 @@ const Personal: React.FC = () => {
             approx):
           </Favorite>
           <FavoriteFlexed>
-            {
-              //@ts-ignore map exists
-              short.map((artists: any) => {
-                return (
+            {short.map((artists: any) => {
+              return (
+                <div>
                   <div>
-                    <div>
-                      {<FavoriteArtistsImg src={artists.images[0].url} />}
-                    </div>
-                    <div>
-                      {
-                        <FavoriteArtistsText href={`/artist/${artists.id}`}>
-                          {artists.name}
-                        </FavoriteArtistsText>
-                      }
-                    </div>
+                    {<FavoriteArtistsImg src={artists.images[0].url} />}
                   </div>
-                );
-              })
-            }
+                  <div>
+                    {
+                      <FavoriteArtistsText href={`/artist/${artists.id}`}>
+                        {artists.name}
+                      </FavoriteArtistsText>
+                    }
+                  </div>
+                </div>
+              );
+            })}
           </FavoriteFlexed>
           <Button className="button_font">
             <a href="/more/artists">See more artists</a>
@@ -86,32 +82,29 @@ const Personal: React.FC = () => {
             Years):
           </Favorite>
           <FavoriteFlexed>
-            {
-              //@ts-ignore map exists
-              tracks.map((track: any) => {
-                return (
+            {tracks.map((track: any) => {
+              return (
+                <div>
                   <div>
-                    <div>
-                      <FavoriteTracksImg
-                        wid="150px"
-                        hei="150px"
-                        src={track.album.images[1].url}
-                        alt={track.name}
-                      />
-                    </div>
-                    <div>
-                      <FavoriteTracksText
-                        href={track.external_urls.spotify}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        {track.name.split("(")[0]}
-                      </FavoriteTracksText>
-                    </div>
+                    <FavoriteTracksImg
+                      wid="150px"
+                      hei="150px"
+                      src={track.album.images[1].url}
+                      alt={track.name}
+                    />
                   </div>
-                );
-              })
-            }
+                  <div>
+                    <FavoriteTracksText
+                      href={track.external_urls.spotify}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {track.name.split("(")[0]}
+                    </FavoriteTracksText>
+                  </div>
+                </div>
+              );
+            })}
           </FavoriteFlexed>
           <Button className="button_font">
             <a href="/more/tracks">See more tracks</a>

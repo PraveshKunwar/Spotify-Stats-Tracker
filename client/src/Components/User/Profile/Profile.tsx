@@ -5,10 +5,9 @@ import React from "react";
 import Navbar from "../../Navbar/Navbar";
 
 const Profile: React.FC = () => {
-  //@ts-ignore -Token exists
-  const access_token: string = useSelector((state) => state.Token.token);
-  //@ts-ignore
-  const checkNull = useSelector((state) => state.SetPersonal);
+  const access_token: string = useSelector((state: any) => state.Token.token);
+
+  const checkNull = useSelector((state: any) => state.SetPersonal);
   const dispatch = useDispatch();
   useEffect(() => {
     PersonalProfile(access_token).then((res) => {
