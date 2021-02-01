@@ -21,7 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-/src/Components/Auth/Client.tsx
-/src/Components/.env
-/src/Components/Auth/SpotifyURL.tsx
