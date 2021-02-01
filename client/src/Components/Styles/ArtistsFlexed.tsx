@@ -10,6 +10,7 @@ const ArtistsFlexed = styled.div`
     margin: 20px;
     margin-top: 3px;
     text-align: center;
+    margin-bottom: 3rem;
   }
 `;
 

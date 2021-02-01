@@ -36,4 +36,13 @@ const Landing: React.FC = () => {
   );
 };
 
+<div className="container">
+  <div>
+    <img src="src" alt="1" />
+  </div>
+  <div>
+    <img src="src" alt="2" />
+  </div>
+</div>;
+
 export default Landing;

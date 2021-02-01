@@ -21,8 +21,8 @@ const Personal: React.FC = () => {
   const Profile = useSelector((state: any) => state.SetPersonal);
 
   const access_token = useSelector((state: any) => state.Token.token);
-  const [short, setShort] = useState([]);
-  const [tracks, setTracks] = useState([]);
+  const [short, setShort] = useState<any[]>([]);
+  const [tracks, setTracks] = useState<any[]>([]);
 
   useEffect(() => {
     FavoriteArtists(access_token, 3)?.then((res) => {
