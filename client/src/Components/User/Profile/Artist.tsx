@@ -9,7 +9,7 @@ import ArtistsFlexed from "../../Styles/ArtistsFlexed";
 import QuickFactsTable from "../../Styles/QuickFactsTable";
 
 const Artist: React.FC = () => {
-  const [id, setId] = useState("");
+  const [id, setId] = useState<string>("");
   const [artist, setArtist] = useState<any[]>([]);
   const [topTracks, setTopTracks] = useState<any[]>([]);
   const [albums, setAlbums] = useState<any[]>([]);
@@ -182,7 +182,7 @@ const Artist: React.FC = () => {
                         track.external_urls.spotify
                       }
                     >
-                      {track.name.split("(")[0]}
+                      {track.name.split(/[()]+/)[0]}
                     </ArtistText>
                   </div>
                 );
@@ -213,14 +213,12 @@ const Artist: React.FC = () => {
                     />
                     <ArtistText
                       size="16px"
-                      rel="noreferrer"
-                      target="_blank"
-                      href={
+                      href={`/album/${
                         //@ts-ignore
-                        album.external_urls.spotify
-                      }
+                        album.id
+                      }`}
                     >
-                      {album.name.split("(")}
+                      {album.name.split(/[()]+/)}
                     </ArtistText>
                   </div>
                 );

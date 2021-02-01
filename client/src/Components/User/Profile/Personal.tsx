@@ -99,7 +99,7 @@ const Personal: React.FC = () => {
                       rel="noreferrer"
                       target="_blank"
                     >
-                      {track.name.split("(")[0]}
+                      {track.name.split(/[()]+/)[0]}
                     </FavoriteTracksText>
                   </div>
                 </div>
