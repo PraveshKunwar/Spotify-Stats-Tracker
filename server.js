@@ -8,6 +8,7 @@ const cors = require("cors");
 const PORT = process.env.PORT || 5000;
 const redirect_uri = process.env.REDIRECT || `http://localhost:${PORT}`;
 const CLIENT_ID = process.env.CLIENT_ID;
+const path = require("path");
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
 if (process.env.NODE_ENV === "production") {
