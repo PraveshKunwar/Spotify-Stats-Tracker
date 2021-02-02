@@ -56,7 +56,8 @@ app.get("/callback", (req, res) => {
     json: true,
   };
   request.post(options, (err, response, body) => {
-    let uri = "http://localhost:3000";
+    let uri =
+      "https://spotifystatstracker.herokuapp.com" || "http://localhost:3000";
     res.redirect(`${uri}`);
   });
 });
