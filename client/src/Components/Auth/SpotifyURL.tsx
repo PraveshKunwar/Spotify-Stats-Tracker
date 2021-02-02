@@ -24,7 +24,10 @@ const scopes = [
 require("dotenv").config();
 const authEndpoint = "https://accounts.spotify.com/authorize";
 const CLIENT_ID = process.env.CLIENT_ID || "b2713e1525b84aa59403ccff96d2dc03";
-const redirectUri = process.env.REDIRECT || "http://localhost:5000/callback";
+const redirectUri =
+  process.env.REDIRECT ||
+  "https://spotifystatstracker.herokuapp.com/callback" ||
+  "http://localhost:5000/callback";
 
 const SpotifyURL: string = `${authEndpoint}?client_id=${CLIENT_ID}&redirect_uri=${redirectUri}&scope=${scopes.join(
   "%20"
