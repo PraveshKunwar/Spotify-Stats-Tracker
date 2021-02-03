@@ -31,7 +31,6 @@ const Landing: React.FC = () => {
           <Login />
         </div>
       )}
-      <p></p>
     </div>
   );
 };

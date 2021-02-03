@@ -6,10 +6,7 @@ const app = express();
 const request = require("request");
 const cors = require("cors");
 const PORT = process.env.PORT || 5000;
-const redirect_uri =
-  "https://spotifystatstracker.herokuapp.com/callback" ||
-  process.env.REDIRECT ||
-  `http://localhost:${PORT}`;
+const redirect_uri = `https://spotifystatstracker.herokuapp.com/callback`;
 const CLIENT_ID = process.env.CLIENT_ID;
 const path = require("path");
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
@@ -58,8 +55,7 @@ app.get("/callback", (req, res) => {
     json: true,
   };
   request.post(options, (err, response, body) => {
-    let uri =
-      "https://spotifystatstracker.herokuapp.com" || "http://localhost:3000";
+    let uri = "https://spotifystatstracker.herokuapp.com/";
     res.redirect(`${uri}`);
   });
 });
